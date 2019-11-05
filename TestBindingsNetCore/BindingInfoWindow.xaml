@@ -1,0 +1,29 @@
+﻿<Window x:Class="TestBindings.BindingInfoWindow"
+        x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestBindings"
+        mc:Ignorable="d"
+        Title="Binding Info" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}" ResizeMode="CanResizeWithGrip">
+    <Grid>
+        <ListView ItemsSource="{Binding BindingInfos}">
+            <ListView.View>
+                <GridView AllowsColumnReorder="True">
+                    <GridViewColumn Header="Data Context" DisplayMemberBinding="{Binding DataContextType, Mode=OneWay}" />
+                    <GridViewColumn Header="Path" DisplayMemberBinding="{Binding DataContextPath, Mode=OneWay}" />
+                    <GridViewColumn Header="Source Type" DisplayMemberBinding="{Binding SourceType, Mode=OneWay}" />
+                    <GridViewColumn Header="Source Value" DisplayMemberBinding="{Binding SourceValue, Mode=OneWay}" />
+                    <GridViewColumn Header="Target Type" DisplayMemberBinding="{Binding TargetType, Mode=OneWay}" />
+                    <GridViewColumn Header="Target Property" DisplayMemberBinding="{Binding TargetProperty, Mode=OneWay}" />
+                    <GridViewColumn Header="Line Number" DisplayMemberBinding="{Binding LineNumber, Mode=OneWay}" />
+                    <GridViewColumn Header="Column" DisplayMemberBinding="{Binding LinePosition, Mode=OneWay}" />
+                    <GridViewColumn Header="File" DisplayMemberBinding="{Binding SourceFile, Mode=OneWay}" />
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status, Mode=OneWay}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
