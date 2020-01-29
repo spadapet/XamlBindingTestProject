@@ -27,7 +27,7 @@ namespace TestBindings
         });
 
         public DateTime StartedTime { get; } = DateTime.Now;
-        public string Text => "This is text6.";
+        public string Text => "This is text.";
         public string NumberAsString => "256";
         public string NullString => null;
         public PersonVM NullPerson => null;

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Media;
 
 namespace TestBindingsNetFx
 {
@@ -10,6 +12,16 @@ namespace TestBindingsNetFx
         {
             this.ViewModel = new MainVM();
             this.InitializeComponent();
+        }
+
+        private void OnClickAddPerson(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.People.Add(new PersonVM()
+            {
+                Name = $"Person {this.ViewModel.People.Count + 1}",
+                FavoriteColor = Colors.Blue,
+                Birthday = DateTime.Parse("05/22/2010"),
+            });
         }
     }
 }

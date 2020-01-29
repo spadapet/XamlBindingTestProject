@@ -18,9 +18,15 @@
         <TextBlock FontSize="24">
             <Run Text="{Binding Path=Text, Mode=OneWay}" FontWeight="Bold" />
             <Run Text="{Binding Path=NumberAsString, Mode=OneWay}" />
-            <Run Text="("/><Run Text="{Binding Path=NullString, Mode=OneWay}" /><Run Text=")"/>
-            <Run Text="("/><Run Text="{Binding Path=NullPerson.Name, Mode=OneWay}" /><Run Text=")"/>
+            <Run Text="{Binding Path=NullString, Mode=OneWay}" />
+            <Run Text="{Binding Path=NullPerson.Name, Mode=OneWay}" />
+            <Run Text="{Binding Path=Height, Mode=OneWay, RelativeSource={RelativeSource AncestorType=Button}}" />
+            <Run Text="{Binding Path=Height, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=CheckBox}}" />
+            <Run Text="{Binding Path=Height, Mode=OneWay, ElementName=Foo}" />
         </TextBlock>
+        <DataGrid Grid.Row="1">
+            <DataGridTextColumn Header="{Binding Name}" />
+        </DataGrid>
         <ListBox Grid.Row="1" ItemsSource="{Binding Path=People}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type local:PersonVM}">
