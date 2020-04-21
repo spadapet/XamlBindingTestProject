@@ -11,5 +11,11 @@ namespace TestBindingsUwp
             this.ViewModel = new MainVM();
             this.InitializeComponent();
         }
+
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Adding a person");
+            this.ViewModel.People.Add(new PersonVM() { Name = "Foobar" });
+        }
     }
 }
