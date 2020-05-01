@@ -18,5 +18,10 @@ namespace TestBindings
             this.ViewModel = new MainVM();
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.People.Add(new PersonVM() { Name = "New Person" });
+        }
     }
 }
