@@ -10,13 +10,21 @@
         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
         DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=Self}}"
         d:DataContext="{d:DesignInstance Type=local:MainVM, IsDesignTimeCreatable=True}">
-    <Grid Margin="10">
+    <Window.Resources>
+        <local:NonConverter x:Key="NonConverter" />
+        <local:ToStringConverter x:Key="ToStringConverter" />
+        <local:ThrowingConverter x:Key="ThrowingConverter" />
+        <local:NullConverter x:Key="NullConverter" />
+        <local:UnsetConverter x:Key="UnsetConverter" />
+    </Window.Resources>
+    <Grid x:Name="rootGrid" Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock FontSize="24">
+            <Run DataContext="{x:Null}" Text="{Binding Path=Text, Mode=OneWay}" FontWeight="Bold" />
             <Run Text="{Binding Path=Text, Mode=OneWay}" FontWeight="Bold" />
             <Run Text="{Binding Path=NumberAsString, Mode=OneWay}" />
             <Run Text="{Binding Path=NullString, Mode=OneWay}" />
@@ -24,6 +32,7 @@
             <Run Text="{Binding Path=Height, Mode=OneWay, RelativeSource={RelativeSource AncestorType=Button}}" />
             <Run Text="{Binding Path=Height, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=CheckBox}}" />
             <Run Text="{Binding Path=Height, Mode=OneWay, ElementName=Foo}" />
+            <Run Text="{Binding Path=MissingProp, Mode=OneWay, ElementName=rootGrid}" />
         </TextBlock>
         <DataGrid Grid.Row="1">
             <DataGridTextColumn Header="{Binding Name}" />
@@ -39,14 +48,18 @@
                         </StackPanel.Resources>
                         <TextBlock Text="{Binding Path=Name}" />
                         <TextBlock Text="{Binding Path=Birthday}" />
-                        <TextBlock Text="{Binding Path=Birthday.DayOfWeek.Foo}" />
-                        <TextBlock Text="{Binding Path=FavoriteColor}" Foreground="{Binding Path=FavoriteColorBrush}" />
-                        <TextBlock Text="{Binding Path=BirthdayFoo}" Foreground="{Binding Path=Birthday.Day}" />
+                        <TextBlock Text="{Binding Path=Birthday.DayOfWeek.Foo}" Foreground="{Binding Exceptional}" Background="{Binding Color}" />
+                        <TextBlock Text="{Binding Path=FavoriteColor}" Foreground="{Binding Path=FavoriteColorBrush}" BaselineOffset="{Binding Path=Birthday.Hour, Converter={StaticResource UnsetConverter}}" />
+                        <TextBlock x:Name="myTextBlock" Text="{Binding Path=BirthdayFoo}" Foreground="{Binding Path=Birthday.Day}" Background="{Binding Path=Birthday.Hour, Converter={StaticResource ToStringConverter}}" />
                         <TextBlock Text="{Binding Path=LeastFavoriteColor}" Foreground="{Binding Path=LeastFavoriteColorBrush}" />
+                        <TextBlock DataContext="{x:Null}" Text="{Binding Path=SomeProperty}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Row="2" Click="Button_Click" HorizontalAlignment="Left">New person</Button>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Grid.Row="2" Click="OnNewPerson">New Person</Button>
+            <Button Grid.Row="2" Click="OnClearPeople">Clear People</Button>
+        </StackPanel>
     </Grid>
 </Window>

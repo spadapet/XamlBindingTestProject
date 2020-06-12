@@ -10,18 +10,20 @@ namespace TestBindings
 
         public MainWindow()
         {
-            Binding.AddTargetUpdatedHandler(this, (object source, DataTransferEventArgs args) =>
-            {
-                Debug.WriteLine(args);
-            });
+            Binding.AddTargetUpdatedHandler(this, (object source, DataTransferEventArgs args) => Debug.WriteLine(args));
 
             this.ViewModel = new MainVM();
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnNewPerson(object sender, RoutedEventArgs args)
         {
             this.ViewModel.People.Add(new PersonVM() { Name = "New Person" });
+        }
+
+        private void OnClearPeople(object sender, RoutedEventArgs args)
+        {
+            this.ViewModel.People.Clear();
         }
     }
 }
