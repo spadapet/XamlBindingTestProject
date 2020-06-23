@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Media;
 
-namespace TestBindingsNetFx
+namespace TestBindings
 {
     internal class PersonVM
     {
         public string Name { get; set; } = string.Empty;
         public DateTime Birthday { get; set; }
-        public Color FavoriteColor { get; set; } = Colors.Transparent;
+        public Color FavoriteColor { get; set;  } = Colors.Transparent;
         public SolidColorBrush FavoriteColorBrush => new SolidColorBrush(this.FavoriteColor);
+        public SolidColorBrush NullBrush => null;
+        public object Exceptional => throw new Exception("Exceptional value");
     }
 
     internal class MainVM
@@ -30,6 +32,8 @@ namespace TestBindingsNetFx
 
         public MainVM()
         {
+            int foo = 2;
+            Debug.Assert(foo != 0);
         }
     }
 }

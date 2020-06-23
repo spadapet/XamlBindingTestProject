@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3C4FB312-2FF7-4101-A6C4-395DFDCF07B5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TestBindingsNetFx</RootNamespace>
+    <RootNamespace>TestBindings</RootNamespace>
     <AssemblyName>TestBindingsNetFx</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters.cs" />
     <Compile Include="ViewModels.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

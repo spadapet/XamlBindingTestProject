@@ -1,8 +1,8 @@
-﻿using System;
+﻿using System.Diagnostics;
 using System.Windows;
-using System.Windows.Media;
+using System.Windows.Data;
 
-namespace TestBindingsNetFx
+namespace TestBindings
 {
     internal partial class MainWindow : Window
     {
@@ -10,18 +10,20 @@ namespace TestBindingsNetFx
 
         public MainWindow()
         {
+            Binding.AddTargetUpdatedHandler(this, (object source, DataTransferEventArgs args) => Debug.WriteLine(args));
+
             this.ViewModel = new MainVM();
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-        private void OnClickAddPerson(object sender, RoutedEventArgs e)
+        private void OnNewPerson(object sender, RoutedEventArgs args)
         {
-            this.ViewModel.People.Add(new PersonVM()
-            {
-                Name = $"Person {this.ViewModel.People.Count + 1}",
-                FavoriteColor = Colors.Blue,
-                Birthday = DateTime.Parse("05/22/2010"),
-            });
+            this.ViewModel.People.Add(new PersonVM() { Name = "New Person" });
+        }
+
+        private void OnClearPeople(object sender, RoutedEventArgs args)
+        {
+            this.ViewModel.People.Clear();
         }
     }
 }
