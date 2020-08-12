@@ -2,7 +2,7 @@
   "profiles": {
     "TestBindings": {
       "commandName": "Project",
-      "nativeDebugging": true
+      "nativeDebugging": false
     }
   }
 }

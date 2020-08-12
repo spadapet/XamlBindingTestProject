@@ -1,27 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <MicrosoftWindowsDesktopAppVersion>3.0.0-preview8-28373-17</MicrosoftWindowsDesktopAppVersion>
-    <WpfRepoRoot>c:\git\wpf</WpfRepoRoot>
-    <WpfConfig>Debug</WpfConfig>
-    <!--<SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x86</RuntimeIdentifier>-->
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TargetFrameworkVersion>5.0.100-rc.2.20479.15</TargetFrameworkVersion>
+    <MicrosoftWindowsDesktopAppVersion>5.0.100-rc.2.20479.15</MicrosoftWindowsDesktopAppVersion>
     <Prefer32Bit>true</Prefer32Bit>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-
-  <ItemGroup>
-    <!--<FrameworkReference Update="Microsoft.WindowsDesktop.App">
-      <TargetingPackVersion>$(MicrosoftWindowsDesktopAppVersion)</TargetingPackVersion>
-    </FrameworkReference>
-    <Reference Include="$(WpfRepoRoot)\artifacts\packaging\$(WpfConfig)\Microsoft.DotNet.Wpf.GitHub\lib\netcoreapp3.0\*.dll" />
-    <ReferenceCopyLocalPaths Include="$(WpfRepoRoot)\artifacts\packaging\$(WpfConfig)\Microsoft.DotNet.Wpf.GitHub\lib\$(RuntimeIdentifier)\*.dll" />-->
-  </ItemGroup>
 
 </Project>

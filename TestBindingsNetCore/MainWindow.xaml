@@ -33,6 +33,7 @@
             <Run Text="{Binding Path=Height, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=CheckBox}}" />
             <Run Text="{Binding Path=Height, Mode=OneWay, ElementName=Foo}" />
             <Run Text="{Binding Path=MissingProp, Mode=OneWay, ElementName=rootGrid}" />
+            <Run Text="{Binding Path=MissingProp, Mode=OneWay, ElementName=rootGrid}" />
         </TextBlock>
         <DataGrid Grid.Row="1">
             <DataGridTextColumn Header="{Binding Name}" />

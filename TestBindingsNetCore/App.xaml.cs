@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+//using System.Windows.Data.Diagnostics;
 
 namespace TestBindings
 {
@@ -6,6 +7,11 @@ namespace TestBindings
     {
         public App()
         {
+            //BindingDiagnostics.BindingFailed += this.OnBindingFailed;
         }
+
+        //private void OnBindingFailed(object sender, BindingFailedEventArgs args)
+        //{
+        //}
     }
 }
