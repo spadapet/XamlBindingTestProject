@@ -17,7 +17,7 @@
         <local:NullConverter x:Key="NullConverter" />
         <local:UnsetConverter x:Key="UnsetConverter" />
     </Window.Resources>
-    <Grid x:Name="rootGrid" Margin="10">
+    <Grid x:Name="rootGrid" Margin="10" local:AttachedProperties.IsBubbleSource="{Binding BadBubbleSource}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -34,6 +34,7 @@
             <Run Text="{Binding Path=Height, Mode=OneWay, ElementName=Foo}" />
             <Run Text="{Binding Path=MissingProp, Mode=OneWay, ElementName=rootGrid}" />
             <Run Text="{Binding Path=MissingProp, Mode=OneWay, ElementName=rootGrid}" />
+            <Run Text="{Binding Path=MissingProp3, Mode=OneWay, ElementName=rootGrid}" />
         </TextBlock>
         <DataGrid Grid.Row="1">
             <DataGridTextColumn Header="{Binding Name}" />
