@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <!--<TargetFrameworkVersion>5.0.100-rc.2.20479.15</TargetFrameworkVersion>
     <MicrosoftWindowsDesktopAppVersion>5.0.100-rc.2.20479.15</MicrosoftWindowsDesktopAppVersion>-->
